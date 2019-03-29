@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 
@@ -131,6 +132,13 @@ class WarningBanner extends Component {
     )
   }
 }
+WarningBanner.defaultProps = {
+  warning: false
+}
+WarningBanner.propTypes = {
+  warning: PropTypes.bool
+}
+
 class WarningRender extends Component {
   constructor(props) {
     super(props);
@@ -185,5 +193,5 @@ class NumberList2 extends Component {
   }
 }
 
-export default NumberList2;
-export { App, HelloWord, Clock, EventParent, LoginControl, WarningRender, NumberList };
+export default WarningRender;
+export { App, HelloWord, Clock, EventParent, LoginControl, WarningRender, NumberList, NumberList2 };
