@@ -146,6 +146,7 @@ class WarningRender extends Component {
       warning: true
     };
     this.handleClick = this.handleClick.bind(this);
+    this.ref = React.createRef();
   }
 
   handleClick() {
@@ -155,7 +156,9 @@ class WarningRender extends Component {
   render() {
     return (
       <div>
-        <WarningBanner warning={this.state.warning}></WarningBanner>
+        {/* ref接收一个回调函数，在组件加载或卸载时调用；}
+        {/* 在原生标签上使用ref时，回调接受dom元素作为参数；在组件上使用ref时，回调接受组件实例作为参数 */}
+        <WarningBanner ref={this.ref} warning={this.state.warning}></WarningBanner>
         <button onClick={this.handleClick}>
           {this.state.warning ? 'Hide' : 'Show'}
         </button>
