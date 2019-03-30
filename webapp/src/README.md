@@ -20,4 +20,19 @@
 17. 高阶组件（HOC）
 18. Code-Spliting & Tree-Shaking  
 19. Route-based splitting vs. Component-based splitting  
-20. React-Router & React-Loadable
+20. React-Router & React-Loadable  
+21. React.Component & React.PureComponent & React.memo  
+22. react-router & react-router-dom & react-router-native
+23. React Router4机制里不默认匹配第一个符合要求的设计理念
+24. React Router Code Spliting(react-loadable)
+
+## TODO
+
+1. React router & react redux && diva  
+2. next ssr  
+3. Gatsby  
+4. Service worker  
+5. flow  
+6. Ts  
+7. React-window \ react-virtualized  
+8. react-app-rewired & customize-cra  
