@@ -1,31 +1,83 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import Loadable from 'react-loadable';
-import { Layout, Menu } from 'antd';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { Layout, Menu, Icon } from 'antd';
 import './assert/style/App.css';
+
+import Routes from './router';
 import menuList from './menuConfig';
 
 const { Sider, Header, Content, Footer } = Layout;
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.history = createBrowserHistory();
+    this.icons = ['mail', 'paper-clip', 'picture', 'hdd', 'appstore', 'tablet', 'tags', 'home'];
+    this.state = {
+      defaultOpend: [],
+      defaultSelected: []
+    }
+  }
+
   onMenuClick(e) {
+    //todo
     console.log(e, this)
+  }
+
+  componentDidMount() {
+    const selected = this.findMenuSelected();
+    this.setState(selected);
+  }
+
+  findMenuSelected() {
+    const path = this.history.location.pathname;
+    let defaultOpend = [];
+    let defaultSelected = []; 
+    menuList.forEach((menu, index) => {
+      if(menu.url === path) {
+        defaultOpend = [];
+        defaultSelected = ['sub' + index];
+        return;
+      }
+      menu.children && menu.children.forEach((item, jndex) => {
+        if(item.url === path) {
+          defaultOpend = ['sub' + index];
+          defaultSelected = ['sub' + index + 'item' + jndex];
+          return;
+        }
+      });
+    });
+    return {
+      defaultOpend,
+      defaultSelected
+    }
   }
 
   render() {
     return (
-      <Router>
-        <Layout style={{ height: '100vh' }}>
-          <Sider theme="light">
+      <Router history={this.history}>
+        <Layout className="app-layout">
+          <Sider className="app-sider" theme="light">
             <Menu
               className="app-menu"
+              mode="inline"
               onClick={this.onMenuClick}
-              mode="inline">
+            >
               {
                 menuList && menuList.map((menu, index) =>
-                  <Menu.SubMenu key={index} title={menu.title}>
+                  !menu.children || !menu.children ?
+                  <Menu.Item key={'sub' + index}>
+                    <Link to={menu.url}><Icon type={this.icons[index%this.icons.length]}></Icon>{menu.title}</Link>
+                  </Menu.Item> : 
+                  <Menu.SubMenu
+                    key={'sub' + index}
+                    title={<span><Icon type={this.icons[index%this.icons.length]}></Icon><span>{menu.title}</span></span>}
+                  >
                     {
-                      menu.children && menu.children.map((item, jndex) =>
-                        <Menu.Item key={jndex}><Link to={item.url}>{item.title}</Link></Menu.Item>
+                      menu.children.map((item, jndex) =>
+                        <Menu.Item key={'sub' + index + 'item' + jndex}>
+                          <Link to={item.url}>{item.title}</Link>
+                        </Menu.Item>
                       )
                     }
                   </Menu.SubMenu>
@@ -33,24 +85,12 @@ class App extends Component {
               }
             </Menu>
           </Sider>
-          <Layout>
+          <Layout className="app-main">
             <Header className="app-header">
-              Ant Design Demo
+              <span className="app-header__title">Ant Design Demo</span>
           </Header>
             <Content className="app-content">
-              <Route exact path="/" component={getComponent('/home/index')}/>
-              <Route exact path="/antd/form" render={() => <Redirect to="/antd/form/input" />}>
-              </Route>
-              <Route exact path="/react/home/index" component={getComponent('/home/index')}>
-              </Route>
-              <Route exact path="/antd/form/input" component={getComponent('/antd/form/input')}>
-              </Route>
-              <Route exact path="/antd/form/select" component={getComponent('/antd/form/select')}>
-              </Route>
-              <Route exact path="/antd/form/radio" component={getComponent('/antd/form/radio')}>
-              </Route>
-              <Route exact path="/antd/form/checkbox" component={getComponent('/antd/form/checkbox')}>
-              </Route>
+              <Routes />
             </Content>
             <Footer className="app-footer">
               My React Demo
@@ -60,13 +100,6 @@ class App extends Component {
       </Router>
     );
   }
-}
-
-function getComponent(path) {
-  return Loadable({
-    loader: () => import(`./pages${path}`),
-    loading: () => <div>Loading ...</div>
-  });
 }
 
 export default App;

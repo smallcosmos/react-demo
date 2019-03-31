@@ -1,9 +1,26 @@
 export default [{
     "title": "首页",
-    "url": "/react/home",
+    "url": "/home/index",
+    "children": null
+}, {
+    "title": "布局",
+    "url": "/antd/layout",
     "children": [{
-        "title": "首页",
-        "url": "/react/home/index"
+        "title": "栅格",
+        "url": "/antd/layout/grid"
+    }]
+}, {
+    "title": "导航",
+    "url": "/antd/nav",
+    "children": [{
+        "title": "图钉",
+        "url": "/antd/nav/affix"
+    }, {
+        "title": "面包屑",
+        "url": "/antd/nav/breadcrumb"
+    }, {
+        "title": "下拉菜单",
+        "url": "/antd/nav/dropdown"
     }]
 }, {
     "title": "表单组件",

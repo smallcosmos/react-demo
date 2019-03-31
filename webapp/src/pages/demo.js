@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import logo from './logo.svg';
 
 // material-ui
 // import Button from '@material-ui/core/Button';
@@ -10,30 +9,8 @@ import { Button } from 'antd';
 // 通过修改webpack配置，引入动态加载，使用上述组件引入方式解决样式动态加载问题
 // import Button from 'antd/lib/button';
 
-import './App.css';
+import '../assert/style/App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
 class HelloWord extends Component {
   render() {
     return (
@@ -227,7 +204,6 @@ class AntdButton extends Component {
 
 export default AntdButton;
 export {
-  App,
   HelloWord,
   Clock,
   EventParent,
