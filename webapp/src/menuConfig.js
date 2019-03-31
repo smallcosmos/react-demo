@@ -37,5 +37,11 @@ export default [{
     }, {
         "title": "勾选框",
         "url": "/antd/form/checkbox"
+    }, {
+        "title": "级联选择",
+        "url": "/antd/form/cascader"
+    }, {
+        "title": "表单",
+        "url": "/antd/form/form"
     }]
 }]

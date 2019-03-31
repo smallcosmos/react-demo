@@ -1,11 +1,25 @@
 import React, {Component} from 'react';
-import { Input } from "antd";
+import { Checkbox } from "antd";
 
-class InputDemo extends Component {
+class Demo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            checked: true
+        };
+        this.onChange = this.onChange.bind(this);
+    }
+    onChange(e) {
+        console.log('checked: ', e.target.checked);
+        this.setState({
+            checked: e.target.checked
+        });
+    }
+
     render() {
         return (
-            <Input value="checkbox111"></Input>
+            <Checkbox value={this.state.checked} onChange={this.onChange}>Checkbox</Checkbox>
         )
     }
 }
-export default InputDemo;
+export default Demo;

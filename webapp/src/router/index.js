@@ -52,6 +52,10 @@ class MyRoutes extends Component {
           </Route>
           <Route exact path="/antd/form/checkbox" component={this.getComponent('/antd/form/checkbox')}>
           </Route>
+          <Route exact path="/antd/form/cascader" component={this.getComponent('/antd/form/cascader')}>
+          </Route>
+          <Route exact path="/antd/form/form" component={this.getComponent('/antd/form/form')}>
+          </Route>
         </Switch>
       </>
     )
