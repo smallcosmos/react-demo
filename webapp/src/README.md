@@ -1,4 +1,4 @@
-# 要点
+# React要点
 
 1. React 生命周期
 2. 受控组件和非受控组件；使用非受控组件而指定默认值  
@@ -15,7 +15,7 @@
 12. React 启发的O(n)差分算法  
 13. Context传递数据（React.createContext, Provider & Consumer）  
 14. Fragment聚合子元素列表(vue template)  
-15. React.Fragment带key值  
+15. 使用React.Fragment带key值  
 16. ReactDOM.createPortal将子节点渲染到父组件以外的 DOM 节点  
 17. 高阶组件（HOC）
 18. Code-Spliting & Tree-Shaking  
@@ -25,11 +25,17 @@
 22. react-router & react-router-dom & react-router-native
 23. React Router4机制里不默认匹配第一个符合要求的设计理念
 24. React Router Code Spliting(react-loadable)
-25. React 监听路由变化
+25. React 监听路由变化（history）
+
+# Redux要点
+
+1. Redux思想（https://www.redux.org.cn/docs/introduction/CoreConcepts.html）
+2. 三大原则（单一数据源、Store只读、纯函数修改）
+3. 拆分 Reducer
 
 ## TODO
 
-1. React router & react redux && diva  
+1. redux && diva  
 2. next ssr  
 3. Gatsby  
 4. Service worker  

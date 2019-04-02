@@ -33,6 +33,12 @@ class MyRoutes extends Component {
         </Switch>
 
         <Switch>
+          <Redirect exact push from="/redux" to="/redux/count" />
+          <Route exact path="/redux/count" component={this.getComponent('/redux/count')}>
+          </Route>
+        </Switch>
+
+        <Switch>
           <Redirect exact push from="/antd/nav" to="/antd/nav/affix" />
           <Route exact path="/antd/nav/affix" component={this.getComponent('/antd/nav/affix')}>
           </Route>

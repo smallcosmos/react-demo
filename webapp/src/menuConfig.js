@@ -10,6 +10,13 @@ export default [{
         "url": "/antd/layout/grid"
     }]
 }, {
+    "title": "Redux",
+    "url": "/redux",
+    "children": [{
+        "title": "计数",
+        "url": "/redux/count"
+    }]
+}, {
     "title": "导航",
     "url": "/antd/nav",
     "children": [{
